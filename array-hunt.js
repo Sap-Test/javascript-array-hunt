@@ -105,38 +105,91 @@ $(document).ready(function () {
         Output it to td#firstEnn
          */
 
+        for(let i = 0; i< myArray.length; i++)
+        {
+            if(myArray[i].includes("n") === true)
+            {
+                let stringContainsN = myArray[i];
+                $("td#firstEnn").text(`${stringContainsN} `);
+                break;
+            }
+        }
 
         /*
         Find all of the strings with less than 6 characters.
         Output them to td#lessThanSix
          */
-
-
+        let lessThanSixArray = [];
+        for(let i = 0; i< myArray.length; i++)
+        {
+            if(myArray[i].length < 6)
+            {
+                lessThanSixArray.push(myArray[i]);
+            }
+        }
+        $("td#lessThanSix").text(lessThanSixArray + " ");
 
         /*
         Find the longest string in the array.
         Output it to td#longName
          */
-
+        let longestString = "";
+        let length = 0;
+        for(let i = 0; i< myArray.length; i++)
+        {
+            if(myArray[i].length > length)
+            {
+                longestString = myArray[i];
+                length = myArray[i].length;
+                $("td#longName").text(longestString);
+            }
+        }
 
         /*
         Find all of the strings that do not contain the letter 's'.
         Output them to td#noEss
          */
-
-
+        let noS = [];
+        for(let i = 0; i< myArray.length; i++)
+        {
+            if(myArray[i].includes("s") === false)
+            {
+                noS.push(myArray[i]);
+                $("td#noEss").text(`${noS}`);
+            }
+        }
 
         /*
         Output all of the strings, but with all of their vowels
         in uppercase, to td#upperVowels
          */
 
+        let strings = myArray.join(" ");
+        let vowelString = "";
+
+        for (let i = 0; i < strings.length; i++)
+        {
+            if (strings[i].includes("a") || strings[i].includes("e") ||
+                strings[i].includes("i") || strings[i].includes("o") ||
+                strings[i].includes("u"))
+            {
+                vowelString += strings[i].toUpperCase();
+            }
+            else
+                vowelString +=strings[i];
+        }
+
+        $("td#upperVowels").text(`${vowelString}`);
 
         /*
         Output all of the strings in reverse order and separated by
         ' - ' to td#reverseDash
          */
 
+        let reverseArray = [];
+        reverseArray = myArray.reverse();
+        let reverseDash = reverseArray.join(" - ")
+        $("td#reverseDash").text(`${reverseDash}`);
 
     }
 
